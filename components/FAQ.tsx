@@ -1,7 +1,7 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
+import BackgroundBubbles from './BackgroundBubbles';
 
 const faqs = [
     { 
@@ -30,25 +30,26 @@ const FAQ: React.FC = () => {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
     return (
-        <section className="py-24 bg-black relative">
+        <section className="py-24 bg-beige relative overflow-hidden">
+            <BackgroundBubbles />
             <div className="container mx-auto px-6 max-w-3xl relative z-10">
                 <div className="text-center mb-12">
-                    <span className="text-flint font-sans uppercase tracking-[0.2em] text-xs">Info</span>
-                    <h2 className="text-3xl md:text-4xl font-display text-white mt-2">Частые Вопросы</h2>
+                    <span className="text-cab-sav font-sans uppercase tracking-[0.2em] text-xs font-bold">Info</span>
+                    <h2 className="text-3xl md:text-4xl font-display text-granat-900 mt-2">Частые Вопросы</h2>
                 </div>
                 
                 <div className="space-y-4">
                     {faqs.map((faq, i) => (
-                        <div key={i} className="border-b border-white/10">
+                        <div key={i} className={`border-b border-roman-coffee/10 transition-all duration-300 ${activeIndex === i ? 'bg-white/50 border-l-4 border-l-cab-sav pl-4' : 'pl-0'}`}>
                             <button
                                 onClick={() => setActiveIndex(activeIndex === i ? null : i)}
-                                className="w-full py-6 flex justify-between items-center text-left focus:outline-none group"
+                                className="w-full py-6 flex justify-between items-center text-left focus:outline-none group px-2"
                             >
-                                <span className={`font-display text-lg md:text-xl transition-colors duration-300 ${activeIndex === i ? 'text-cab-sav' : 'text-napa group-hover:text-white'}`}>
+                                <span className={`font-display text-lg md:text-xl transition-colors duration-300 ${activeIndex === i ? 'text-cab-sav' : 'text-granat-900 group-hover:text-cab-sav'}`}>
                                     {faq.q}
                                 </span>
                                 <span className={`transition-transform duration-300 ${activeIndex === i ? 'rotate-180' : ''}`}>
-                                    {activeIndex === i ? <Minus className="text-cab-sav" /> : <Plus className="text-napa group-hover:text-white" />}
+                                    {activeIndex === i ? <Minus className="text-cab-sav" /> : <Plus className="text-roman-coffee group-hover:text-cab-sav" />}
                                 </span>
                             </button>
                             <AnimatePresence>
@@ -60,7 +61,7 @@ const FAQ: React.FC = () => {
                                         transition={{ duration: 0.3 }}
                                         className="overflow-hidden"
                                     >
-                                        <p className="pb-8 text-flint font-sans leading-relaxed text-sm md:text-base pr-8">
+                                        <p className="pb-8 pl-2 text-flint font-sans leading-relaxed text-sm md:text-base pr-8">
                                             {faq.a}
                                         </p>
                                     </motion.div>

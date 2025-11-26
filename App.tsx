@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
@@ -64,7 +63,7 @@ const App: React.FC = () => {
 
   return (
     <BookingProvider>
-      <main className="bg-tamarind min-h-screen text-white selection:bg-cab-sav selection:text-white">
+      <main className="bg-beige min-h-screen text-granat-900 selection:bg-cab-sav selection:text-white">
         <CustomCursor />
         <Navigation />
         

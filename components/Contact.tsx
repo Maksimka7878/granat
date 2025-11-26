@@ -1,12 +1,14 @@
 import React from 'react';
 import { MapPin, Phone, Instagram, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
+import BackgroundBubbles from './BackgroundBubbles';
 
 const Contact: React.FC = () => {
   return (
     <footer id="contact" className="bg-black text-white pt-24 pb-12 relative overflow-hidden">
         {/* Background Texture */}
         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <BackgroundBubbles className="opacity-20" colors={["#4d0a18", "#341515", "#795d4c"]} />
         
         <div className="container mx-auto px-6 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">

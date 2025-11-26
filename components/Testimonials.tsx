@@ -1,7 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import BackgroundBubbles from './BackgroundBubbles';
 
 const reviews = [
     { 
@@ -47,23 +47,24 @@ const Testimonials: React.FC = () => {
     }, []);
 
     return (
-        <section className="py-24 bg-tamarind relative overflow-hidden">
+        <section className="py-24 bg-beige relative overflow-hidden">
              {/* Background Decor */}
-             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_rgba(77,10,24,0.15),_transparent_50%)]"></div>
+             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_rgba(77,10,24,0.05),_transparent_50%)]"></div>
+             <BackgroundBubbles />
              
              <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-16">
                     <motion.span 
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        className="text-roman-coffee font-sans uppercase tracking-[0.2em] text-xs"
+                        className="text-cab-sav font-sans uppercase tracking-[0.2em] text-xs font-bold"
                     >
                         Love Letters
                     </motion.span>
                     <motion.h2 
                          initial={{ opacity: 0, y: 20 }}
                          whileInView={{ opacity: 1, y: 0 }}
-                         className="text-4xl md:text-5xl font-display text-white mt-4"
+                         className="text-4xl md:text-5xl font-display text-granat-900 mt-4"
                     >
                         Отзывы Клиентов
                     </motion.h2>
@@ -78,21 +79,21 @@ const Testimonials: React.FC = () => {
                             animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
                             exit={{ opacity: 0, x: -50, filter: "blur(10px)" }}
                             transition={{ duration: 0.6, ease: "easeOut" }}
-                            className="bg-white/5 backdrop-blur-md border border-napa/10 p-8 md:p-16 text-center relative"
+                            className="bg-white/80 backdrop-blur-md border border-roman-coffee/10 p-8 md:p-16 text-center relative shadow-xl"
                         >
-                            <Quote className="absolute top-8 left-8 text-cab-sav/30 w-16 h-16 transform -scale-x-100" />
+                            <Quote className="absolute top-8 left-8 text-cab-sav/20 w-16 h-16 transform -scale-x-100" />
                             
-                            <div className="flex justify-center gap-1 mb-8 text-roman-coffee">
+                            <div className="flex justify-center gap-1 mb-8 text-cab-sav">
                                 {[...Array(reviews[current].rating)].map((_, i) => <Star key={i} size={18} fill="currentColor" />)}
                             </div>
                             
-                            <p className="text-xl md:text-3xl font-display text-napa italic mb-10 leading-relaxed">
+                            <p className="text-xl md:text-3xl font-display text-flint italic mb-10 leading-relaxed">
                                 "{reviews[current].text}"
                             </p>
                             
                             <div className="flex flex-col items-center">
-                                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-cab-sav to-roman-coffee mb-4"></div>
-                                <p className="text-white font-sans font-bold tracking-widest uppercase text-sm mb-1">
+                                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-cab-sav to-roman-coffee mb-4 shadow-lg border-2 border-white"></div>
+                                <p className="text-granat-900 font-sans font-bold tracking-widest uppercase text-sm mb-1">
                                     {reviews[current].name}
                                 </p>
                                 <p className="text-flint text-xs font-sans uppercase tracking-wider">
@@ -105,13 +106,13 @@ const Testimonials: React.FC = () => {
                     {/* Navigation Buttons */}
                     <button 
                         onClick={prev} 
-                        className="absolute top-1/2 -left-4 md:-left-16 -translate-y-1/2 text-napa/50 hover:text-white transition-all hover:scale-110"
+                        className="absolute top-1/2 -left-4 md:-left-16 -translate-y-1/2 text-roman-coffee hover:text-cab-sav transition-all hover:scale-110"
                     >
                         <ChevronLeft size={40} strokeWidth={1} />
                     </button>
                     <button 
                         onClick={next} 
-                        className="absolute top-1/2 -right-4 md:-right-16 -translate-y-1/2 text-napa/50 hover:text-white transition-all hover:scale-110"
+                        className="absolute top-1/2 -right-4 md:-right-16 -translate-y-1/2 text-roman-coffee hover:text-cab-sav transition-all hover:scale-110"
                     >
                         <ChevronRight size={40} strokeWidth={1} />
                     </button>
@@ -123,7 +124,7 @@ const Testimonials: React.FC = () => {
                                 key={idx}
                                 onClick={() => setCurrent(idx)}
                                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                                    current === idx ? 'bg-cab-sav w-6' : 'bg-napa/30'
+                                    current === idx ? 'bg-cab-sav w-6' : 'bg-roman-coffee/30 hover:bg-cab-sav/50'
                                 }`}
                             />
                         ))}

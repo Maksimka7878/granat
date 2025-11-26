@@ -20,26 +20,26 @@
               // Defined Palette
               'roman-coffee': '#795d4c',
               'flint': '#6f6a61',
-              'cab-sav': '#4d0a18',
-              'tamarind': '#341515',
+              'cab-sav': '#4d0a18', // Main Granat Accent
+              'tamarind': '#341515', // Dark Text
               'napa': '#aca494',
+              'beige': '#F4F1EA', // Main Background
 
               // Semantic Mapping
               granat: {
-                950: '#1a0505', // Ultra dark for contrast
-                900: '#341515', // Tamarind
-                800: '#4d0a18', // Cab Sav
-                700: '#4d0a18', // Cab Sav
-                600: '#4d0a18', // Cab Sav
-                500: '#4d0a18', // Cab Sav (Primary)
-                400: '#795d4c', // Roman Coffee (Accent)
-                300: '#aca494', // Napa (Highlight)
-                100: '#f0ece4', // Lightest
+                950: '#1a0505', // Ultra dark
+                900: '#341515', // Tamarind (Text)
+                800: '#4d0a18', // Cab Sav (Primary Accent)
+                700: '#4d0a18', 
+                600: '#795d4c', // Roman Coffee
+                500: '#795d4c', 
+                400: '#aca494', // Napa
+                100: '#F4F1EA', // Beige (Background)
               },
               gold: {
-                100: '#f0ece4',
-                300: '#aca494', // Napa
-                500: '#795d4c', // Roman Coffee
+                100: '#F4F1EA',
+                300: '#aca494',
+                500: '#795d4c',
               }
             },
             fontFamily: {
@@ -64,8 +64,8 @@
     </script>
     <style>
       body {
-        background-color: #341515; /* Tamarind */
-        color: #aca494; /* Napa */
+        background-color: #F4F1EA; /* Beige */
+        color: #341515; /* Tamarind */
         overflow-x: hidden;
       }
       /* Custom Scrollbar */
@@ -73,7 +73,7 @@
         width: 8px;
       }
       ::-webkit-scrollbar-track {
-        background: #341515; /* Tamarind */
+        background: #F4F1EA;
       }
       ::-webkit-scrollbar-thumb {
         background: #4d0a18; /* Cab Sav */
@@ -84,14 +84,20 @@
       }
       
       .text-glow {
-        text-shadow: 0 0 20px rgba(77, 10, 24, 0.6); /* Cab Sav glow */
+        text-shadow: 0 0 20px rgba(77, 10, 24, 0.3);
       }
       
+      /* Glass panel adjusted for light mode */
       .glass-panel {
-        background: rgba(52, 21, 21, 0.6); /* Tamarind base */
+        background: rgba(244, 241, 234, 0.85); /* Beige base */
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(172, 164, 148, 0.1); /* Napa border */
+        border-bottom: 1px solid rgba(77, 10, 24, 0.05);
+      }
+
+      .mask-image-linear-gradient {
+        mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
       }
     </style>
   <script type="importmap">

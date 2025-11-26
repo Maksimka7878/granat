@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check, Calendar, User, Phone, Sparkles } from 'lucide-react';
@@ -68,20 +67,20 @@ const BookingModal: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeBooking}
-            className="absolute inset-0 bg-tamarind/90 backdrop-blur-md"
+            className="absolute inset-0 bg-granat-900/50 backdrop-blur-md"
           />
 
-          {/* Modal Content */}
+          {/* Modal Content - Beige Theme */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-lg bg-granat-900 border border-napa/20 shadow-2xl overflow-hidden"
+            className="relative w-full max-w-lg bg-beige border border-white shadow-2xl overflow-hidden"
           >
             {/* Close Button */}
             <button
               onClick={closeBooking}
-              className="absolute top-4 right-4 text-napa hover:text-white transition-colors z-10"
+              className="absolute top-4 right-4 text-roman-coffee hover:text-cab-sav transition-colors z-10"
             >
               <X size={24} />
             </button>
@@ -100,12 +99,12 @@ const BookingModal: React.FC = () => {
                   >
                     <div className="text-center mb-8">
                       <span className="text-cab-sav font-sans text-xs uppercase tracking-[0.2em] font-bold">Online Booking</span>
-                      <h3 className="text-3xl font-display text-white mt-2">Запись в <span className="text-napa italic">Granat</span></h3>
+                      <h3 className="text-3xl font-display text-granat-900 mt-2">Запись в <span className="text-cab-sav italic">Granat</span></h3>
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="space-y-1">
-                        <label className="text-xs text-napa uppercase tracking-wider ml-1">Имя</label>
+                        <label className="text-xs text-roman-coffee uppercase tracking-wider ml-1">Имя</label>
                         <div className="relative">
                           <User className="absolute left-3 top-1/2 -translate-y-1/2 text-flint w-4 h-4" />
                           <input
@@ -115,13 +114,13 @@ const BookingModal: React.FC = () => {
                             value={formData.name}
                             onChange={handleChange}
                             placeholder="Ваше имя"
-                            className="w-full bg-tamarind/50 border border-napa/20 rounded-none py-3 pl-10 pr-4 text-white placeholder-flint focus:outline-none focus:border-cab-sav transition-colors font-sans"
+                            className="w-full bg-white border border-roman-coffee/20 rounded-none py-3 pl-10 pr-4 text-granat-900 placeholder-flint/70 focus:outline-none focus:border-cab-sav transition-colors font-sans"
                           />
                         </div>
                       </div>
 
                       <div className="space-y-1">
-                        <label className="text-xs text-napa uppercase tracking-wider ml-1">Телефон</label>
+                        <label className="text-xs text-roman-coffee uppercase tracking-wider ml-1">Телефон</label>
                         <div className="relative">
                           <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-flint w-4 h-4" />
                           <input
@@ -131,20 +130,20 @@ const BookingModal: React.FC = () => {
                             value={formData.phone}
                             onChange={handleChange}
                             placeholder="+7 (999) 000-00-00"
-                            className="w-full bg-tamarind/50 border border-napa/20 rounded-none py-3 pl-10 pr-4 text-white placeholder-flint focus:outline-none focus:border-cab-sav transition-colors font-sans"
+                            className="w-full bg-white border border-roman-coffee/20 rounded-none py-3 pl-10 pr-4 text-granat-900 placeholder-flint/70 focus:outline-none focus:border-cab-sav transition-colors font-sans"
                           />
                         </div>
                       </div>
 
                       <div className="space-y-1">
-                        <label className="text-xs text-napa uppercase tracking-wider ml-1">Услуга</label>
+                        <label className="text-xs text-roman-coffee uppercase tracking-wider ml-1">Услуга</label>
                         <div className="relative">
                           <Sparkles className="absolute left-3 top-1/2 -translate-y-1/2 text-flint w-4 h-4" />
                           <select
                             name="service"
                             value={formData.service}
                             onChange={handleChange}
-                            className="w-full bg-tamarind/50 border border-napa/20 rounded-none py-3 pl-10 pr-4 text-white focus:outline-none focus:border-cab-sav transition-colors font-sans appearance-none truncate"
+                            className="w-full bg-white border border-roman-coffee/20 rounded-none py-3 pl-10 pr-4 text-granat-900 focus:outline-none focus:border-cab-sav transition-colors font-sans appearance-none truncate"
                           >
                             <option value="" disabled className="text-flint">Выберите услугу</option>
                             
@@ -161,7 +160,7 @@ const BookingModal: React.FC = () => {
                       </div>
 
                       <div className="space-y-1">
-                        <label className="text-xs text-napa uppercase tracking-wider ml-1">Желаемая дата</label>
+                        <label className="text-xs text-roman-coffee uppercase tracking-wider ml-1">Желаемая дата</label>
                         <div className="relative">
                           <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-flint w-4 h-4" />
                           <input
@@ -169,7 +168,7 @@ const BookingModal: React.FC = () => {
                             name="date"
                             value={formData.date}
                             onChange={handleChange}
-                            className="w-full bg-tamarind/50 border border-napa/20 rounded-none py-3 pl-10 pr-4 text-white placeholder-flint focus:outline-none focus:border-cab-sav transition-colors font-sans [color-scheme:dark]"
+                            className="w-full bg-white border border-roman-coffee/20 rounded-none py-3 pl-10 pr-4 text-granat-900 placeholder-flint focus:outline-none focus:border-cab-sav transition-colors font-sans"
                           />
                         </div>
                       </div>
@@ -177,7 +176,7 @@ const BookingModal: React.FC = () => {
                       <button
                         disabled={isLoading}
                         type="submit"
-                        className="w-full py-4 bg-cab-sav hover:bg-roman-coffee text-white uppercase tracking-widest font-sans text-sm transition-all duration-300 relative overflow-hidden group mt-4 disabled:opacity-70"
+                        className="w-full py-4 bg-cab-sav hover:bg-granat-900 text-white uppercase tracking-widest font-sans text-sm transition-all duration-300 relative overflow-hidden group mt-4 disabled:opacity-70 shadow-lg"
                       >
                          <span className={`relative z-10 flex items-center justify-center gap-2 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
                            Подтвердить запись
@@ -198,17 +197,17 @@ const BookingModal: React.FC = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-center py-12"
                   >
-                    <div className="w-20 h-20 bg-granat-800 rounded-full flex items-center justify-center mx-auto mb-6 relative">
-                        <div className="absolute inset-0 border border-napa/30 rounded-full animate-ping opacity-20"></div>
-                        <Check className="text-napa w-10 h-10" />
+                    <div className="w-20 h-20 bg-cab-sav rounded-full flex items-center justify-center mx-auto mb-6 relative">
+                        <div className="absolute inset-0 border border-cab-sav/30 rounded-full animate-ping opacity-20"></div>
+                        <Check className="text-white w-10 h-10" />
                     </div>
-                    <h3 className="text-3xl font-display text-white mb-4">Заявка принята!</h3>
-                    <p className="text-napa/80 font-sans mb-8">
+                    <h3 className="text-3xl font-display text-granat-900 mb-4">Заявка принята!</h3>
+                    <p className="text-flint font-sans mb-8">
                       Мы свяжемся с вами в ближайшее время для подтверждения записи.
                     </p>
                     <button
                       onClick={closeBooking}
-                      className="px-8 py-3 border border-napa/30 text-napa hover:bg-napa hover:text-tamarind transition-all uppercase text-xs tracking-widest"
+                      className="px-8 py-3 border border-roman-coffee text-roman-coffee hover:bg-roman-coffee hover:text-white transition-all uppercase text-xs tracking-widest"
                     >
                       Отлично
                     </button>

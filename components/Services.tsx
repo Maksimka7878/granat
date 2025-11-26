@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useBooking } from '../context/BookingContext';
 import { Download, ChevronRight } from 'lucide-react';
+import BackgroundBubbles from './BackgroundBubbles';
 
 // Data Structure
 interface ServiceItem {
@@ -100,28 +100,29 @@ const Services: React.FC = () => {
   const activeData = serviceData.find(c => c.id === activeCategory) || serviceData[0];
 
   return (
-    <section id="services" className="py-24 bg-tamarind relative overflow-hidden">
+    <section id="services" className="py-24 bg-beige relative overflow-hidden">
         {/* Background Decorative Elements */}
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-napa/20 to-transparent"></div>
-        <div className="absolute -left-20 top-40 w-96 h-96 bg-cab-sav/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cab-sav/30 to-transparent"></div>
+        <div className="absolute -left-20 top-40 w-96 h-96 bg-cab-sav/5 rounded-full blur-[100px] pointer-events-none"></div>
+        <BackgroundBubbles />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <motion.span 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="text-roman-coffee font-sans uppercase tracking-[0.2em] text-xs"
+            className="text-cab-sav font-sans uppercase tracking-[0.2em] text-xs font-bold"
           >
             Price List
           </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-display text-white mt-4"
+            className="text-4xl md:text-5xl font-display text-granat-900 mt-4"
           >
             Меню Услуг
           </motion.h2>
-          <div className="w-24 h-1 bg-cab-sav mx-auto mt-6 rounded-full opacity-50"></div>
+          <div className="w-24 h-1 bg-cab-sav mx-auto mt-6 rounded-full"></div>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
@@ -133,14 +134,14 @@ const Services: React.FC = () => {
                         <button
                             key={category.id}
                             onClick={() => setActiveCategory(category.id)}
-                            className={`w-full text-left py-4 px-6 relative group transition-all duration-300 border-l-2 ${
+                            className={`w-full text-left py-4 px-6 relative group transition-all duration-300 border-l-4 ${
                                 activeCategory === category.id 
                                 ? 'border-cab-sav bg-gradient-to-r from-cab-sav/10 to-transparent' 
-                                : 'border-white/5 hover:border-roman-coffee hover:bg-white/5'
+                                : 'border-transparent hover:border-cab-sav/30 hover:bg-white/50'
                             }`}
                         >
                             <span className={`font-display text-lg tracking-wide uppercase transition-colors ${
-                                activeCategory === category.id ? 'text-white' : 'text-napa group-hover:text-roman-coffee'
+                                activeCategory === category.id ? 'text-cab-sav font-bold' : 'text-flint group-hover:text-granat-900'
                             }`}>
                                 {category.title}
                             </span>
@@ -155,9 +156,9 @@ const Services: React.FC = () => {
                     ))}
 
                     <div className="pt-8">
-                         <a href="#" className="flex items-center gap-3 text-flint text-xs uppercase tracking-widest hover:text-white transition-colors group">
+                         <a href="#" className="flex items-center gap-3 text-flint text-xs uppercase tracking-widest hover:text-cab-sav transition-colors group">
                             <Download size={16} />
-                            <span className="border-b border-transparent group-hover:border-white transition-all">Скачать полный прайс (PDF)</span>
+                            <span className="border-b border-transparent group-hover:border-cab-sav transition-all">Скачать полный прайс (PDF)</span>
                          </a>
                     </div>
                 </div>
@@ -175,11 +176,11 @@ const Services: React.FC = () => {
                         className="space-y-6"
                     >
                         <div className="mb-8">
-                          <h3 className="text-3xl font-display text-roman-coffee mb-4 hidden lg:block">
+                          <h3 className="text-3xl font-display text-granat-900 mb-4 hidden lg:block">
                               {activeData.title}
                           </h3>
                           {activeData.introText && (
-                            <p className="text-napa/80 font-sans italic text-sm leading-relaxed border-l-2 border-cab-sav pl-4">
+                            <p className="text-flint font-sans italic text-sm leading-relaxed border-l-2 border-cab-sav pl-4">
                               {activeData.introText}
                             </p>
                           )}
@@ -192,33 +193,33 @@ const Services: React.FC = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.05 }}
                                 onClick={() => openBooking(item.name)}
-                                className="group relative p-6 border-b border-white/5 hover:border-roman-coffee/30 cursor-pointer transition-colors"
+                                className="group relative p-6 border-b border-granat-900/5 hover:border-cab-sav/20 cursor-pointer transition-colors hover:bg-white/40"
                             >
-                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent group-hover:via-white/5 transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent group-hover:via-white/50 transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
                                 
                                 <div className="relative z-10 flex flex-col md:flex-row md:items-baseline justify-between gap-4">
                                     <div className="flex-1">
-                                        <h4 className="text-xl font-display text-white group-hover:text-gold-300 transition-colors">
+                                        <h4 className="text-xl font-display text-granat-900 group-hover:text-cab-sav transition-colors">
                                             {item.name}
                                         </h4>
                                         {item.description && (
-                                            <p className="text-flint text-sm mt-2 font-sans max-w-md group-hover:text-napa transition-colors">
+                                            <p className="text-flint text-sm mt-2 font-sans max-w-md group-hover:text-roman-coffee transition-colors">
                                                 {item.description}
                                             </p>
                                         )}
                                     </div>
                                     <div className="flex items-center gap-4">
-                                        <div className="hidden md:block flex-1 h-px bg-white/10 w-24"></div>
-                                        <span className="text-lg font-sans font-bold text-napa whitespace-nowrap group-hover:text-white transition-colors">
+                                        <div className="hidden md:block flex-1 h-px bg-granat-900/10 w-24"></div>
+                                        <span className="text-lg font-sans font-bold text-cab-sav whitespace-nowrap group-hover:scale-105 transition-transform">
                                             {item.price}
                                         </span>
-                                        <ChevronRight size={16} className="text-roman-coffee opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                                        <ChevronRight size={16} className="text-cab-sav opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                                     </div>
                                 </div>
                             </motion.div>
                         ))}
                         
-                        <div className="mt-8 p-4 bg-black/20 border border-white/5 rounded-sm">
+                        <div className="mt-8 p-4 bg-white/50 border border-granat-900/5 rounded-sm">
                             <p className="text-flint text-xs font-sans leading-relaxed">
                                 * Стоимость услуг может варьироваться в зависимости от категории мастера (Младший мастер / Мастер / Топ-мастер), длины и густоты волос. Окончательная стоимость определяется после консультации.
                             </p>
