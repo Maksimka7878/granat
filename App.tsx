@@ -18,20 +18,48 @@ import { BookingProvider } from './context/BookingContext';
 const App: React.FC = () => {
   // Simple smooth scroll implementation for anchor links
   useEffect(() => {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
+    const handleAnchorClick = (e: Event) => {
+      const anchor = e.currentTarget as HTMLAnchorElement;
+      const href = anchor.getAttribute('href');
+      
+      if (href) {
         e.preventDefault();
-        const href = anchor.getAttribute('href');
-        if (href) {
-            const target = document.querySelector(href);
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
+        
+        // Handle "Scroll to Top" for simple '#' links (like the logo)
+        if (href === '#') {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            return;
+        }
+
+        // Handle anchor links
+        if (href.startsWith('#') && href.length > 1) {
+            try {
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            } catch (error) {
+                console.warn("Smooth scroll target not found or invalid:", href);
             }
         }
-      });
+      }
+    };
+
+    const anchors = document.querySelectorAll('a[href^="#"]');
+    anchors.forEach(anchor => {
+      anchor.addEventListener('click', handleAnchorClick);
     });
+
+    return () => {
+      anchors.forEach(anchor => {
+        anchor.removeEventListener('click', handleAnchorClick);
+      });
+    };
   }, []);
 
   return (

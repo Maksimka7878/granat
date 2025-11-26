@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useBooking } from '../context/BookingContext';
+import Logo from './Logo';
 
 const Navigation: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,13 +34,15 @@ const Navigation: React.FC = () => {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-          isScrolled ? 'py-4 glass-panel shadow-2xl shadow-tamarind/50' : 'py-8 bg-transparent'
+          isScrolled ? 'py-2 glass-panel shadow-2xl shadow-tamarind/50' : 'py-6 bg-transparent'
         }`}
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
-          <div className="text-2xl font-display font-bold text-napa tracking-widest uppercase cursor-pointer flex items-center gap-2">
-            <span className="text-cab-sav text-3xl">G</span>ranat
-          </div>
+          
+          {/* Logo Section */}
+          <a href="#" className="flex items-center group">
+            <Logo className={`h-14 w-auto transition-colors duration-300 ${isScrolled ? 'text-napa group-hover:text-white' : 'text-white group-hover:text-gold-300'}`} />
+          </a>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-12">
@@ -86,6 +89,11 @@ const Navigation: React.FC = () => {
             >
                 <X size={32} />
             </button>
+            
+            <div className="mb-4">
+               <Logo className="h-20 w-auto text-gold-300" />
+            </div>
+
             {navLinks.map((link) => (
               <a
                 key={link.name}

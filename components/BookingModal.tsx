@@ -17,10 +17,23 @@ const BookingModal: React.FC = () => {
     date: ''
   });
 
+  // Standard Categories for the dropdown
+  const categories = [
+    "Hair Couture",
+    "Nail Artistry",
+    "Visage & Brows",
+    "Granat Spa",
+    "Total Look",
+    "Подарочный Сертификат"
+  ];
+
   useEffect(() => {
     if (preselectedService) {
       setFormData(prev => ({ ...prev, service: preselectedService }));
+    } else {
+      setFormData(prev => ({ ...prev, service: '' }));
     }
+    
     if (isBookingOpen) {
       setStep('form');
       setIsLoading(false);
@@ -41,6 +54,9 @@ const BookingModal: React.FC = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  // Determine if the current service is a custom one (not in the standard list)
+  const isCustomService = formData.service && !categories.includes(formData.service);
 
   return (
     <AnimatePresence>
@@ -128,15 +144,18 @@ const BookingModal: React.FC = () => {
                             name="service"
                             value={formData.service}
                             onChange={handleChange}
-                            className="w-full bg-tamarind/50 border border-napa/20 rounded-none py-3 pl-10 pr-4 text-white focus:outline-none focus:border-cab-sav transition-colors font-sans appearance-none"
+                            className="w-full bg-tamarind/50 border border-napa/20 rounded-none py-3 pl-10 pr-4 text-white focus:outline-none focus:border-cab-sav transition-colors font-sans appearance-none truncate"
                           >
                             <option value="" disabled className="text-flint">Выберите услугу</option>
-                            <option value="Hair Couture">Hair Couture</option>
-                            <option value="Nail Artistry">Nail Artistry</option>
-                            <option value="Visage & Brows">Visage & Brows</option>
-                            <option value="Granat Spa">Granat Spa</option>
-                            <option value="Total Look">Total Look</option>
-                            <option value="Подарочный Сертификат">Подарочный Сертификат</option>
+                            
+                            {/* Dynamically add the preselected service if it's not a standard category */}
+                            {isCustomService && (
+                                <option value={formData.service}>{formData.service}</option>
+                            )}
+                            
+                            {categories.map((cat) => (
+                                <option key={cat} value={cat}>{cat}</option>
+                            ))}
                           </select>
                         </div>
                       </div>
