@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Granat Beauty Studio</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Manrope:wght@200;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              // Defined Palette
+              'roman-coffee': '#795d4c',
+              'flint': '#6f6a61',
+              'cab-sav': '#4d0a18',
+              'tamarind': '#341515',
+              'napa': '#aca494',
+
+              // Semantic Mapping
+              granat: {
+                950: '#1a0505', // Ultra dark for contrast
+                900: '#341515', // Tamarind
+                800: '#4d0a18', // Cab Sav
+                700: '#4d0a18', // Cab Sav
+                600: '#4d0a18', // Cab Sav
+                500: '#4d0a18', // Cab Sav (Primary)
+                400: '#795d4c', // Roman Coffee (Accent)
+                300: '#aca494', // Napa (Highlight)
+                100: '#f0ece4', // Lightest
+              },
+              gold: {
+                100: '#f0ece4',
+                300: '#aca494', // Napa
+                500: '#795d4c', // Roman Coffee
+              }
+            },
+            fontFamily: {
+              serif: ['"Playfair Display"', 'serif'],
+              display: ['"Cinzel"', 'serif'],
+              sans: ['"Manrope"', 'sans-serif'],
+            },
+            animation: {
+              'spin-slow': 'spin 12s linear infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'shimmer': 'shimmer 2s linear infinite',
+            },
+            keyframes: {
+              shimmer: {
+                '0%': { backgroundPosition: '-200% 0' },
+                '100%': { backgroundPosition: '200% 0' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #341515; /* Tamarind */
+        color: #aca494; /* Napa */
+        overflow-x: hidden;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #341515; /* Tamarind */
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #4d0a18; /* Cab Sav */
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #795d4c; /* Roman Coffee */
+      }
+      
+      .text-glow {
+        text-shadow: 0 0 20px rgba(77, 10, 24, 0.6); /* Cab Sav glow */
+      }
+      
+      .glass-panel {
+        background: rgba(52, 21, 21, 0.6); /* Tamarind base */
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(172, 164, 148, 0.1); /* Napa border */
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
